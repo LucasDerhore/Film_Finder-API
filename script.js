@@ -10,7 +10,7 @@ movieSee.addEventListener("submit", (e) => {
   e.preventDefault();
   Display.innerHTML = "";
 
-  fetch(`http://www.omdbapi.com/?apikey=${apikey}&s=${searchInput.value}`)
+  fetch(`https://www.omdbapi.com/?apikey=${apikey}&s=${searchInput.value}`)
     .then((response) => response.json())
     .then((response) => {
       for (let movie of response.Search) {
