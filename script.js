@@ -17,6 +17,13 @@ movieSee.addEventListener("submit", (e) => {
         displayMovie(movie);
       }
     })
+    .then(() => {
+      let items = document.querySelectorAll(".card");
+      items.forEach(function (item) {
+        item.classList.add("not-visible");
+        observer.observe(item);
+      });
+    })
     .catch((error) => console.log(error));
 });
 
@@ -53,6 +60,7 @@ function test(imdbID) {
       displayModal(response);
     });
 }
+
 // Display Read More
 
 const displayModal = (response) => {
@@ -74,13 +82,6 @@ const displayModal = (response) => {
           <p class="px-5">Release date: ${response.Year}</p>
           <p class="px-5">${response.Plot}</p>
         </div>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
-          Close
-        </button>
 `;
   modal.classList.remove("hidden");
   modalbg.classList.remove("hidden");
@@ -95,3 +96,21 @@ function CloseModal() {
 
   console.log(modal);
 }
+
+// Lets go Scroll
+
+let observer = new IntersectionObserver(
+  function (observables) {
+    observables.forEach(function (observable) {
+      if (observable.intersectionRatio > 0) {
+        observable.target.classList.remove("not-visible");
+        console.log("Item visible");
+      } else {
+        observable.target.classList.add("not-visible");
+      }
+    });
+  },
+  {
+    threshold: [0, 0],
+  }
+);

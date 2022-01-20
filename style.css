@@ -9,10 +9,19 @@ body {
 .card {
   border-radius: 10px;
   width: 750px;
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.4s, opacity 0.4s;
+}
+
+.card.not-visible {
+  transform: translateX(50px);
+  opacity: 0;
 }
 
 img {
   border-radius: 10px;
+  width: 90%;
 }
 
 .row {
@@ -20,8 +29,8 @@ img {
 }
 
 #modal {
-  width: 60%;
-  height: 70vh;
+  width: 50%;
+  height: 50vh;
   background-color: #ffff;
   position: fixed;
   top: 50%;
@@ -29,6 +38,8 @@ img {
   transform: translate(-50%, -50%);
   display: block;
   z-index: 999;
+  border-radius: 10px;
+  text-align: start;
 }
 
 #modal-bg {
@@ -42,4 +53,29 @@ img {
 
 .hidden {
   display: none !important;
+}
+
+.modal-title {
+  text-align: right;
+  font-size: 28px;
+  padding-right: 70px;
+}
+
+.btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+}
+
+.px-5 {
+  padding: 10px !important;
+}
+
+.float-start {
+  padding: 0px 15px 0px !important;
+}
+
+.card {
+  margin: 15px;
 }
